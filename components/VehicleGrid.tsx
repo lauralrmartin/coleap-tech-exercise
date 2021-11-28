@@ -37,8 +37,6 @@ const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
         }
       })
     );
-
-    console.log(vehicles.map((v) => parsePrice(v.price)));
   }, [vehicles, sorting, sortOrder]);
 
   return (
