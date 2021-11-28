@@ -1,29 +1,23 @@
-# Next.js + Tailwind CSS Example
+# Coleap technical test
+This is my implementation of Coleap's technical test in under 2h.
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
-
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
-
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+## Mock API
+```
+https://6157228e8f7ea600179850e4.mockapi.io/api/vehicles
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Exercise
+- Read the data from the API provided above
+- Display the items in a grid with photo, make, model and price
+- Add sorting to the grid to sort by: price and range
+- When clicking on an item, a modal opens up and displays the rest of the information: available colours, price, range
+
+## Stack
+
+This project is built using `TypeScript` and `NextJS`. I've used `Tailwind CSS` to speed things up and little to no custom CSS.
+
+- (NextJS)[https://nextjs.org/docs]: React based framwork
+- (tailwindcss)[https://tailwindcss.com/docs]: Minimal CSS framework
+
+## How to run
+You can run the project locally with `npm install` and `npm run dev`. With a few tweaks it could be easily deployed to production too.
