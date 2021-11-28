@@ -41,7 +41,7 @@ const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
         <div>
           <Select
             id="sorting"
@@ -59,7 +59,7 @@ const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
         {sortedVehicles.map((vehicle: VehicleData) => (
           <Vehicle
             key={vehicle.id}
