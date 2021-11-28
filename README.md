@@ -16,8 +16,8 @@ https://6157228e8f7ea600179850e4.mockapi.io/api/vehicles
 
 This project is built using `TypeScript` and `NextJS`. I've used `Tailwind CSS` to speed things up and little to no custom CSS.
 
-- (NextJS)[https://nextjs.org/docs]: React based framwork
-- (tailwindcss)[https://tailwindcss.com/docs]: Minimal CSS framework
+- [NextJS](https://nextjs.org/docs): React based framwork
+- [tailwindcss](https://tailwindcss.com/docs): Minimal CSS framework
 
 ## How to run
 You can run the project locally with `npm install` and `npm run dev`. With a few tweaks it could be easily deployed to production too.
