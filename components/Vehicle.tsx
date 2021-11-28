@@ -38,7 +38,6 @@ const Vehicle: FC<VehicleProps> = ({
       <li>
         Range: {range.distance} {range.unit}
       </li>
-      <li>Colors: {colors.join(" ")}</li>
     </ul>
   </div>
 );
