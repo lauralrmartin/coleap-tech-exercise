@@ -22,20 +22,23 @@ const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
   const [selectedVehicle, setSelectedVehicle] = useState<VehicleData>(null);
 
   useEffect(() => {
+    const sortedVehicles = [...vehicles];
     setSortedVehicles(
-      vehicles.sort((a, b) => {
+      sortedVehicles.sort((a, b) => {
         switch (sorting) {
           case "range":
-            let s = sortOrder === "desc" ? -1 : 1;
+            let s = sortOrder === "asc" ? -1 : 1;
             return a.range.distance > b.range.distance ? -s : s;
           default:
           case "price":
-            return sortOrder === "desc"
+            return sortOrder === "asc"
               ? parsePrice(a.price) - parsePrice(b.price)
               : parsePrice(b.price) - parsePrice(a.price);
         }
       })
     );
+
+    console.log(vehicles.map((v) => parsePrice(v.price)));
   }, [vehicles, sorting, sortOrder]);
 
   return (
