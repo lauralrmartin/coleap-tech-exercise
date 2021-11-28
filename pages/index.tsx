@@ -6,8 +6,8 @@ import VehicleGrid from "../components/VehicleGrid";
 
 export default function Home({ data }): ReactElement {
   return (
-    <div className="container mx-auto">
-      <h1>Hello!</h1>
+    <div className="container mx-auto mt-24">
+      <h1 className="text-4xl mb-10">Coleap Technical Exercise</h1>
       <VehicleGrid vehicles={data} />
     </div>
   )

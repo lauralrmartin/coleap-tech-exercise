@@ -12,16 +12,35 @@ export interface VehicleData {
   range: VehicleRange;
   colors: string[];
   price: string;
-  photo: URL;
+  photo: string;
 }
 
-const Vehicle: FC<VehicleData> = ({id, make, model, price}): ReactElement => (
-    <div className="bg-white shadow overflow-hidden sm:rounded-lg px-5 py-3">
-        <div>{id}</div>
-        <div>{make}</div>
-        <div>{model}</div>
-        <div>{price}</div>
+interface VehicleProps {
+  data: VehicleData;
+  onClick: () => void;
+}
+
+const Vehicle: FC<VehicleProps> = ({
+  data: { make, model, price, colors, photo, range },
+  onClick,
+}): ReactElement => (
+  <div className="bg-white shadow overflow-hidden sm:rounded-lg cursor-pointer hover:shadow-lg" onClick={onClick}>
+    <div className="px-5 py-3 bg-gradient-to-br from-purple-800 to-purple-500 text-white">
+      {make} {model}
     </div>
+    <div className="border-b-2">
+      <img className="max-h-48 m-auto" src={photo} />
+    </div>
+    <ul className="px-5 py-3">
+      <li>Make: {make}</li>
+      <li>Model: {model}</li>
+      <li>Price: {price}</li>
+      <li>
+        Range: {range.distance} {range.unit}
+      </li>
+      <li>Colors: {colors.join(" ")}</li>
+    </ul>
+  </div>
 );
 
 export default Vehicle;

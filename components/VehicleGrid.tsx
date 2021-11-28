@@ -1,4 +1,5 @@
 import { FC, ReactElement, useEffect, useState } from "react";
+import Modal from "./Modal";
 import Select from "./Select";
 import Vehicle, { VehicleData } from "./Vehicle";
 
@@ -17,17 +18,19 @@ const sortDirection: SortOrder[] = ["asc", "desc"];
 const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
   const [sorting, setSorting] = useState<Sorting>("price");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-  const [sortedVehicles, setSortedVehicles] = useState(vehicles);
+  const [sortedVehicles, setSortedVehicles] = useState<VehicleData[]>(vehicles);
+  const [selectedVehicle, setSelectedVehicle] = useState<VehicleData>(null);
 
   useEffect(() => {
     setSortedVehicles(
       vehicles.sort((a, b) => {
         switch (sorting) {
           case "range":
-            return a.range.distance > b.range.distance ? -1 : 1;
+            let s = sortOrder === "desc" ? -1 : 1;
+            return a.range.distance > b.range.distance ? -s : s;
           default:
           case "price":
-            return sortOrder === "asc"
+            return sortOrder === "desc"
               ? parsePrice(a.price) - parsePrice(b.price)
               : parsePrice(b.price) - parsePrice(a.price);
         }
@@ -37,13 +40,38 @@ const VehicleGrid: FC<VehicleGridProps> = ({ vehicles }): ReactElement => {
 
   return (
     <>
-      <Select id="sorting" options={sortOptions} onSelect={(s) => setSorting(s)} />
-      <Select id="sortOrder" options={sortDirection} onSelect={(s) => setSortOrder(s)} />
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <Select
+            id="sorting"
+            label="Sort By"
+            options={sortOptions}
+            onSelect={(s) => setSorting(s)}
+          />
+        </div>
+        <div>
+          <Select
+            id="sortOrder"
+            label="Sort Order"
+            options={sortDirection}
+            onSelect={(s) => setSortOrder(s)}
+          />
+        </div>
+      </div>
       <div className="grid grid-cols-2 gap-4">
         {sortedVehicles.map((vehicle: VehicleData) => (
-          <Vehicle key={vehicle.id} {...vehicle} />
+          <Vehicle
+            key={vehicle.id}
+            data={vehicle}
+            onClick={() => setSelectedVehicle(vehicle)}
+          />
         ))}
       </div>
+      <Modal
+        isOpen={!!selectedVehicle}
+        vehicle={selectedVehicle}
+        onClose={() => setSelectedVehicle(null)}
+      />
     </>
   );
 };

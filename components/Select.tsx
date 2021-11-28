@@ -2,17 +2,18 @@ import { FC, ReactElement } from "react";
 
 interface SelectProps {
   id: string;
+  label: string;
   options: string[];
   onSelect: (s: any) => void;
 }
 
-const Select: FC<SelectProps> = ({ id, options, onSelect }): ReactElement => (
+const Select: FC<SelectProps> = ({ id, label, options, onSelect }): ReactElement => (
   <>
     <label
       htmlFor={id}
       className="text-sm font-medium text-gray-900 block mb-2"
     >
-      Sort By
+      {label}
     </label>
     <select
       id={id}
